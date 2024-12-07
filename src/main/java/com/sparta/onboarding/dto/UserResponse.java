@@ -7,31 +7,51 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class UserResponse {
-  private String username;
-  private String nickname;
-  private List<Authority> authorities;
 
   @Getter
   @Builder
   @NoArgsConstructor
   @AllArgsConstructor
-  public static class Authority {
-    private String authorityName;
+  public static class SignUpResponse {
+    private String username;
+    private String nickname;
+    private List<Authority> authorities;
+
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class Authority {
+      private String authorityName;
+    }
+
+    public static SignUpResponse of(User user) {
+      return SignUpResponse.builder()
+          .username(user.getUsername())
+          .nickname(user.getNickname())
+          .authorities(List.of(Authority.builder()
+              .authorityName(user.getRole().name())
+              .build())
+          )
+          .build();
+    }
   }
 
-  public static UserResponse of(User user) {
-    return UserResponse.builder()
-        .username(user.getUsername())
-        .nickname(user.getNickname())
-        .authorities(List.of(Authority.builder()
-            .authorityName(user.getRole().name())
-            .build())
-        )
-        .build();
+  @Getter
+  @Builder
+  @NoArgsConstructor
+  @AllArgsConstructor
+  public static class FirstSignResponse {
+    private String accessToken;
+    private String refreshToken;
+
+    public static FirstSignResponse of(String accessToken, String refreshToken) {
+      return FirstSignResponse.builder()
+          .accessToken(accessToken)
+          .refreshToken(refreshToken)
+          .build();
+    }
   }
+
 }

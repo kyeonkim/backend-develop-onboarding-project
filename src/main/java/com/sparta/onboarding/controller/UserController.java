@@ -17,7 +17,12 @@ public class UserController {
   private final UserService userService;
 
   @PostMapping("/signup")
-  public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest.SignUp request) {
+  public ResponseEntity<UserResponse.SignUpResponse> createUser(@RequestBody UserRequest.SignUp request) {
     return ResponseEntity.status(HttpStatus.CREATED).body(userService.signUp(request));
+  }
+
+  @PostMapping("/sign")
+  public ResponseEntity<UserResponse.FirstSignResponse> signIn(@RequestBody UserRequest.Sign request) {
+    return ResponseEntity.ok(userService.signIn(request));
   }
 }
