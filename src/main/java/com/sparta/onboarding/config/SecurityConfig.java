@@ -28,6 +28,8 @@ public class SecurityConfig {
                 authorize
                     .requestMatchers("/signup")
                     .permitAll()
+                    .requestMatchers("/sign")
+                    .permitAll()
                     .anyRequest()
                     .authenticated());
 
