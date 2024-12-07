@@ -17,3 +17,7 @@ jwt:
   secretKey: [secretKey]
   access-token-expiration: 60000
   refresh-token-expiration: 1800000
+
+springdoc:
+  swagger-ui:
+    path: /api-test

@@ -71,7 +71,7 @@ jwt:
 
 ## 테스트
 
-1. Swagger UI 이용: [url] - 업데이트 예정
+1. Swagger UI 이용: /api-test(ex: http://localhost:8080/api-test)
 2. Postman과 같이 API 요청 테스트 툴 이용
 ##### Request 예시
 ```markdown
