@@ -61,7 +61,7 @@ public class JwtTokenizer {
           .parseSignedClaims(jws);
 
       Claims claims = claimsJws.getBody();
-      log.info("유효한 서명입니다. Claims: {}", claims);
+      log.debug("JWT 서명이 확인되었습니다.");
     } catch (ExpiredJwtException e) {
       log.error("토큰이 만료되었습니다: {}", e.getMessage());
       throw new ExpiredJwtException(e.getHeader(), e.getClaims(), "만료된 JWT 토큰입니다.");
