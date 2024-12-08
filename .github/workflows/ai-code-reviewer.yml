@@ -20,5 +20,5 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           MODEL: gpt-3.5-turbo
           LANGUAGE: Korean
-          max_tokens: 1000
-          MAX_PATCH_LENGTH: 1000
+          max_tokens: 100
+          MAX_PATCH_LENGTH: 100
