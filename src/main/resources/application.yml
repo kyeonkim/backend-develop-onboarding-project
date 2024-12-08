@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: onboarding
+  datasource:
+    url: jdbc:mysql://localhost:[port]/[database]
+    username: [username]
+    password: [password]
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+jwt:
+  secretKey: [secretKey]
+  access-token-expiration: 60000
+  refresh-token-expiration: 1800000
+
+springdoc:
+  swagger-ui:
+    path: /api-test
