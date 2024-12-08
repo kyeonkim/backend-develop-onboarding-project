@@ -13,7 +13,6 @@ public class SwaggerConfig {
   @Bean
   public OpenAPI openAPI() {
     return new OpenAPI()
-        .components(new Components())
         .components(new Components()
           .addSecuritySchemes("bearer-key",
             new SecurityScheme()
