@@ -33,6 +33,9 @@ public class UserService {
 
   // 회원가입 로직
   public UserResponse.SignUpResponse signUp(SignUp request) {
+     if (userRepository.findByUsername(request.getUsername()).isPresent()) {
+         throw new IllegalArgumentException("이미 존재하는 사용자 이름입니다.");
+     }
     String encodedPassword = passwordEncoder.encode(request.getPassword());
     User user = userRepository.save(User.create(request, encodedPassword));
     return UserResponse.SignUpResponse.of(user);
