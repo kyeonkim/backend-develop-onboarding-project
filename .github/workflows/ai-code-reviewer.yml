@@ -2,22 +2,23 @@ name: AI Code Reviewer
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, reopened, synchronize]
     branches: [ main ]
 
-permissions: write-all
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
   review:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
-
       - name: AI Code Reviewer
-        uses: kyeonkim/ai-code-reviewer@main
-        with:
+        uses: anc95/ChatGPT-CodeReview@main
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          exclude: "**/*.json, **/*.md"
-          OPENAI_API_MODEL: "gpt-4"
+          MODEL: gpt-3.5-turbo
+          LANGUAGE: Korean
+          max_tokens: 10000
+          MAX_PATCH_LENGTH: 10000
